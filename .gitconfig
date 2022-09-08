@@ -1,0 +1,21 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Tian Pengfei
+	email = itsneo1990@gmail.com
+[core]
+	autocrlf = false
+	whitespace = blank-at-eol,blank-at-eof,space-before-tab
+  quotepath = false
+	pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true

@@ -1,0 +1,24 @@
+tmux_conf_24b_colour=false
+bind x kill-pane
+
+set -g @plugin 'dracula/tmux'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+
+
+set -g @dracula-plugins "cpu-usage gpu-usage ram-usage"
+set -g @dracula-show-powerline true
+set -g @dracula-show-flags true
+set -g @dracula-refresh-rate 5
+set -g @dracula-show-left-icon session
+set -g @dracula-ping-server "baidu.com"
+set -g @dracula-ping-rate 5
+set -g @dracula-show-fahrenheit false
+set -g @dracula-border-contrast true
+set -g @dracula-show-right-sep 
+set -g @dracula-show-left-sep 
+set -g @dracula-plugins "battery cpu-usage ram-usage network network-bandwidth network-ping weather time"
+
+set -g @continuum-restore 'on'
+set -g mouse on

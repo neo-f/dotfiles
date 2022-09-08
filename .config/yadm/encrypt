@@ -1,0 +1,3 @@
+.ssh/*
+.config/trojan/config.json
+.config/trojan/ca-cert.json

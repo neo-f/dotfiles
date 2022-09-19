@@ -11,48 +11,15 @@ M.ui = {
 }
 
 M.plugins = {
+	-- LSP Stuff
 	["williamboman/mason.nvim"] = {
 		override_options = require("custom.override.mason"),
 	},
-	["NvChad/nvterm"] = {
-		override_options = require("custom.override.nvterm"),
-	},
-	["hrsh7th/nvim-cmp"] = {
-		override_options = require("custom.override.nvim-cmp"),
-	},
-	["kyazdani42/nvim-tree.lua"] = {
-		override_options = require("custom.override.nvim-tree"),
-	},
-	["goolord/alpha-nvim"] = { disable = false },
 	["glepnir/lspsaga.nvim"] = {
 		config = function()
 			local saga = require("lspsaga")
 			saga.init_lsp_saga()
 			vim.diagnostic.config({ virtual_text = false })
-		end,
-	},
-	["kylechui/nvim-surround"] = {
-		config = function()
-			require("nvim-surround").setup({})
-		end,
-	},
-	["RRethy/vim-illuminate"] = {
-		config = function()
-			require("illuminate").configure({
-				-- providers: provider used to get references in the buffer, ordered by priority
-				providers = {
-					"lsp",
-					"treesitter",
-					"regex",
-				},
-				filetypes_denylist = {
-					"NvimTree",
-					"dirvish",
-					"fugitive",
-				},
-				-- delay: delay in milliseconds
-				delay = 100,
-			})
 		end,
 	},
 	["neovim/nvim-lspconfig"] = {
@@ -61,10 +28,47 @@ M.plugins = {
 			require("custom.override.lspconfig")
 		end,
 	},
+	["RRethy/vim-illuminate"] = {
+		config = function()
+			require("illuminate").configure({
+				providers = { "lsp", "treesitter", "regex" },
+				filetypes_denylist = { "NvimTree" },
+				delay = 100,
+			})
+		end,
+	},
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",
 		config = function()
 			require("custom.plugins.null_ls").setup()
+		end,
+	},
+	["j-hui/fidget.nvim"] = {
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
+	["b0o/schemastore.nvim"] = {},
+	["hrsh7th/nvim-cmp"] = {
+		override_options = require("custom.override.nvim-cmp"),
+	},
+
+	-- Other
+
+	["NvChad/nvterm"] = {
+		override_options = require("custom.override.nvterm"),
+	},
+	["kyazdani42/nvim-tree.lua"] = {
+		override_options = require("custom.override.nvim-tree"),
+	},
+	["folke/which-key.nvim"] = {
+		disable = false,
+	},
+	["f-person/git-blame.nvim"] = {},
+
+	["kylechui/nvim-surround"] = {
+		config = function()
+			require("nvim-surround").setup({})
 		end,
 	},
 	["folke/todo-comments.nvim"] = {
@@ -79,17 +83,6 @@ M.plugins = {
 			require("symbols-outline").setup()
 		end,
 	},
-	["j-hui/fidget.nvim"] = {
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
-	["b0o/schemastore.nvim"] = {},
-	["ahmedkhalf/project.nvim"] = {
-		config = function()
-			require("project_nvim").setup()
-		end,
-	},
 	["andrewferrier/debugprint.nvim"] = {
 		config = function()
 			require("debugprint").setup()
@@ -98,5 +91,4 @@ M.plugins = {
 }
 
 M.mappings = require("custom.mappings")
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 return M

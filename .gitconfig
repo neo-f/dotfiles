@@ -19,3 +19,12 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[maintenance]
+	repo = /Users/neo/.znap
+	repo = /Users/neo/.znap/.git
+	repo = /Users/neo/.znap/alias-tips
+	repo = /Users/neo/.znap/conda-zsh-completion
+	repo = /Users/neo/.znap/ohmyzsh
+	repo = /Users/neo/.znap/zsh-autosuggestions
+	repo = /Users/neo/.znap/zsh-completions
+	repo = /Users/neo/.znap/zsh-syntax-highlighting

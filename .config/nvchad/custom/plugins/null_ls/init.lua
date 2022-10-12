@@ -1,12 +1,12 @@
 local null_ls = require("null-ls")
 local b = null_ls.builtins
 
- local custom_go_actions = require "custom.plugins.null_ls.go"
+local custom_go_actions = require("custom.plugins.null_ls.go")
 
 local sources = {
 	-- Golang
 	b.formatting.goimports,
-	b.formatting.golines.with({ extra_args = { "-m", "180" } }),
+	-- b.formatting.golines.with({ extra_args = { "-m", "180" } }),
 	b.diagnostics.golangci_lint.with({
 		condition = function(utils)
 			return utils.root_has_file(".golangci.yml")
@@ -57,8 +57,8 @@ local sources = {
 		filetypes = {},
 	}),
 
-            custom_go_actions.gomodifytags,
-            custom_go_actions.gostructhelper,
+	custom_go_actions.gomodifytags,
+	custom_go_actions.gostructhelper,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

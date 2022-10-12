@@ -49,6 +49,7 @@ alias lg='lazygit'
 alias t='tmux attach -t NEO || tmux new -s NEO'
 alias kssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
+alias diff="kitty +kitten diff"
 alias bup='brew update && brew upgrade --greedy'
 
 
@@ -101,6 +102,13 @@ export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
 
 
+
 ################ dev
 alias cl='kubectl logs -f -lapp=cp-service'
 alias cw='watch kubectl get po -lapp=cp-service'
+po(){
+  export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080
+}
+pf(){
+  unset http_proxy https_proxy ALL_PROXY
+}

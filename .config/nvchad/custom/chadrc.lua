@@ -1,14 +1,3 @@
--- fold
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = "*", command = "normal zR" })
-
--- neovide
-vim.opt.guifont = "FantasqueSansMono Nerd Font:h15"
-vim.g.neovide_input_macos_alt_is_meta = true
-vim.g.neovide_input_use_logo = true
-vim.g.neovide_fullscreen = true
-
 local M = {}
 
 M.ui = {
@@ -17,6 +6,7 @@ M.ui = {
 }
 
 M.plugins = {
+	["github/copilot.vim"] = {},
 	["nvim-neorg/neorg"] = {
 		ft = "norg",
 		after = "nvim-treesitter",
@@ -43,9 +33,40 @@ M.plugins = {
 		end,
 		requires = "nvim-lua/plenary.nvim",
 	},
+	["nvim-treesitter/nvim-treesitter"] = {
+		override_options = {
+			ensure_installed = {
+				"lua",
+				"go",
+				"python",
+			},
+		},
+	},
 	-- LSP Stuff
 	["williamboman/mason.nvim"] = {
-		override_options = require("custom.override.mason"),
+		override_options = {
+			ensure_installed = {
+				-- lua stuff
+				"lua-language-server",
+				"stylua",
+				-- go
+				"gopls",
+				"golangci-lint-langserver",
+				"golines",
+				"goimports",
+				-- rust
+				"rust-analyzer",
+				-- python
+				"pyright",
+				"black",
+				-- web dev
+				"json-lsp",
+				"prettier",
+				-- shell
+				"shfmt",
+				"shellcheck",
+			},
+		},
 	},
 	["glepnir/lspsaga.nvim"] = {
 		config = function()
@@ -75,47 +96,34 @@ M.plugins = {
 			require("custom.plugins.null_ls").setup()
 		end,
 	},
-	["j-hui/fidget.nvim"] = {
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
 	["b0o/schemastore.nvim"] = {},
-	["hrsh7th/nvim-cmp"] = {
-		override_options = require("custom.override.nvim-cmp"),
-	},
-	["tzachar/cmp-tabnine"] = {
-		run = "./install.sh",
-		requires = "hrsh7th/nvim-cmp",
-		config = function()
-			require("cmp_tabnine.config").setup({
-				max_lines = 1000,
-				max_num_results = 20,
-				sort = true,
-				run_on_every_keystroke = true,
-				snippet_placeholder = "..",
-				ignored_file_types = {
-					-- default is not to ignore
-					-- uncomment to ignore in lua:
-					-- lua = true
-				},
-				show_prediction_strength = false,
-			})
-		end,
-	},
-
+	--
 	-- Other
-
 	["NvChad/nvterm"] = {
-		override_options = require("custom.override.nvterm"),
+		override_options = {
+			terminals = {
+				type_opts = {
+					float = {
+						row = 0.1,
+						col = 0.1,
+						width = 0.8,
+						height = 0.7,
+					},
+				},
+			},
+		},
 	},
 	["kyazdani42/nvim-tree.lua"] = {
-		override_options = require("custom.override.nvim-tree"),
+		override_options = {
+			git = { enable = true, ignore = false },
+			renderer = { highlight_git = true, icons = { show = { git = true } } },
+			diagnostics = { enable = true },
+			update_focused_file = { enable = true, update_cwd = true },
+			sync_root_with_cwd = true,
+			respect_buf_cwd = true,
+		},
 	},
-	["folke/which-key.nvim"] = {
-		disable = false,
-	},
-	["f-person/git-blame.nvim"] = {},
+	["folke/which-key.nvim"] = { disable = false },
 
 	["kylechui/nvim-surround"] = {
 		config = function()
@@ -137,6 +145,11 @@ M.plugins = {
 	["andrewferrier/debugprint.nvim"] = {
 		config = function()
 			require("debugprint").setup()
+		end,
+	},
+	["ahmedkhalf/project.nvim"] = {
+		config = function()
+			require("project_nvim").setup()
 		end,
 	},
 }

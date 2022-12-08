@@ -1,6 +1,13 @@
 local M = {}
 
 M.additional_lspconfig = {
+	i = {
+		["<C-e>"] = {
+			"copilot#Accept('<CR>')",
+			"   copilot accept",
+			opts = { expr = true, silent = true, replace_keycodes = false },
+		},
+	},
 	n = {
 		--  LSP
 		["<leader>lj"] = {

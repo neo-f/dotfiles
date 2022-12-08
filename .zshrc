@@ -3,7 +3,7 @@ bindkey -e
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
-
+export CC=gcc-12
 export PATH=$PATH:$HOME/go/bin
 [[ -f ~/.cargo/env ]] && source ~/.cargo/env
 
@@ -98,16 +98,14 @@ fi
 
 
 export PATH="$PATH:$HOME/.spicetify"
-export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
 
 
-
 ################ dev
-alias cl='kubectl logs -f -lapp=cp-service'
-alias cw='watch kubectl get po -lapp=cp-service'
+alias cl='kubectl logs -f -lrdm_app=voc-cp-service'
+alias cw='watch kubectl get po -lrdm_app=voc-cp-service'
 po(){
-  export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080
+  export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 }
 pf(){
   unset http_proxy https_proxy ALL_PROXY

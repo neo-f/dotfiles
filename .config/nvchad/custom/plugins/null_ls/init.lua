@@ -6,7 +6,7 @@ local custom_go_actions = require("custom.plugins.null_ls.go")
 local sources = {
 	-- Golang
 	b.formatting.goimports,
-	b.formatting.golines.with({ extra_args = { "-m", "250" } }),
+	b.formatting.golines.with({ extra_args = { "-m", "250" }, filetypes = { "go" } }),
 	b.diagnostics.golangci_lint.with({
 		condition = function(utils)
 			return utils.root_has_file(".golangci.yml")

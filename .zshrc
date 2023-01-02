@@ -42,7 +42,7 @@ znap eval zoxide_ 'zoxide init zsh'
 znap eval starship_ 'starship init zsh'
 znap prompt
 
-alias vi='nvim'
+alias vi='lvim'
 alias ls='exa' l='exa -lbF --git' la='l -a' ll='exa -lbhHigUmuS --time-style=long-iso --git --color-scale' lla='ll -a' lr='exa -R' lt='exa -T --level=5'
 alias k='kubectl'
 alias lg='lazygit'

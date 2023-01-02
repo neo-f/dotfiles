@@ -15,9 +15,6 @@ M.plugins = {
 			require("neorg").setup({
 				load = {
 					["core.defaults"] = {},
-					["core.gtd.base"] = {
-						config = { workspace = "gtd" },
-					},
 					["core.norg.dirman"] = {
 						config = {
 							workspaces = {

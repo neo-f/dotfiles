@@ -1,86 +1,95 @@
+---@type MappingsConfig
 local M = {}
 
+M.general = {
+  n = {
+    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+  },
+}
+
+M.comment = {
+  n = {
+    ["gcc"] = {
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      "toggle comment",
+    },
+  },
+
+  v = {
+    ["gc"] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "toggle comment",
+    },
+  },
+}
+
+M.lspconfig = {
+  n = {
+    ["gr"] = { "<cmd>Telescope lsp_references<CR>", "lsp references" },
+  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "   Prev Diagnostic" },
+  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "   Next Diagnostic" },
+  },
+}
+
+M.git = {
+  n = {
+    ["<leader>gc"] = { "<cmd>Telescope git_commits<CR>", "git commits" },
+    ["<leader>gb"] = { "<cmd>Telescope git_branches<CR>", "git branches" },
+    ["<leader>gs"] = { "<cmd>Telescope git_status<CR>", "git status" },
+  },
+}
+
+M.search = {
+  n = {
+    ["<leader>fk"] = { "<cmd>Telescope keymaps<CR>", "find keymaps" },
+    ["<leader>fs"] = { "<cmd>Telescope lsp_document_symbols<CR>", "find document symbols" },
+  },
+}
+
+-- more keybinds!
 M.additional_lspconfig = {
-	i = {
-		["<C-e>"] = {
-			"copilot#Accept('<CR>')",
-			"   copilot accept",
-			opts = { expr = true, silent = true, replace_keycodes = false },
-		},
-	},
-	n = {
-		--  LSP
-		["lk"] = {
-			"<cmd>Lspsaga diagnostic_jump_prev<CR>",
-			"   Prev Diagnostic",
-		},
-		["lj"] = {
-			"<cmd>Lspsaga diagnostic_jump_next<CR>",
-			"   Next Diagnostic",
-		},
-		["<leader>sl"] = {
-			"<cmd>Lspsaga show_line_diagnostics<CR>",
-			"   Show Line Diagnostics",
-		},
-		["<leader>sc"] = {
-			"<cmd>Lspsaga show_cursor_diagnostics<CR>",
-			"   Show Cursor Diagnostics",
-		},
-		["<leader>sb"] = {
-			"<cmd>Lspsaga show_buf_diagnostics<CR>",
-			"   Show Buffer Diagnostics",
-		},
-		["<leader>o"] = {
-			"<cmd>Lspsaga outline<CR>",
-			"   Show Outline",
-		},
-		["<leader>ci"] = {
-			"<cmd>Lspsaga incoming_calls<CR>",
-			"   Show Incoming Calls",
-		},
-		["<leader>co"] = {
-			"<cmd>Lspsaga outgoing_calls<CR>",
-			"   Show Outgoing Calls",
-		},
-		["<leader>ca"] = {
-			"<cmd>Lspsaga code_action<CR>",
-			"   Show Code Actions",
-		},
-		["gh"] = {
-			"<cmd>Lspsaga lsp_finder<CR>",
-			"   Lsp Finder",
-		},
-		["<leader>lr"] = {
-			function()
-				require("nvchad_ui.renamer").open()
-			end,
-			"   Lsp Rename",
-		},
-		["<leader>lq"] = {
-			function()
-				vim.diagnostic.setloclist()
-			end,
-			"   Lsp Quickfix",
-		},
-		["<leader>gj"] = {
-			function()
-				require("gitsigns").next_hunk()
-			end,
-			"  Next Hunk",
-		},
-		["<leader>gk"] = {
-			function()
-				require("gitsigns").preview_hunk()
-			end,
-			"  Prev Hunk",
-		},
-	},
-	v = {
-		["<leader>la"] = {
-			"<cmd><C-U>Lspsaga range_code_action<CR>",
-			"   Lsp Code Action",
-		},
-	},
+  i = {
+    ["<C-e>"] = {
+      "copilot#Accept('<CR>')",
+      "   copilot accept",
+      opts = { expr = true, silent = true, replace_keycodes = false },
+    },
+  },
+  n = {
+    ["<leader>gg"] = { "<cmd>LazyGit<CR>", "LazyGit" },
+    --  LSP
+    ["<leader>o"] = { "<cmd>Lspsaga outline<CR>", "   Show Outline" },
+
+    ["<leader>gj"] = {
+      function()
+        require("gitsigns").next_hunk()
+      end,
+      "  Next Hunk",
+    },
+    ["<leader>gk"] = {
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      "  Prev Hunk",
+    },
+
+    ["<leader>la"] = { "<cmd>Lspsaga code_action<CR>", "   Show Code Actions" },
+    ["<leader>lf"] = { "<cmd>Lspsaga lsp_finder<CR>", "   Lsp Finder" },
+    ["<leader>lr"] = {
+      function()
+        require("nvchad_ui.renamer").open()
+      end,
+      "   Lsp Rename",
+    },
+    ["<leader>lq"] = {
+      function()
+        vim.diagnostic.setloclist()
+      end,
+      "   Lsp Quickfix",
+    },
+  },
 }
 
 return M

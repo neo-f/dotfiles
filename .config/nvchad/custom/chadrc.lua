@@ -1,12 +1,12 @@
 local M = {}
 
 M.ui = {
-	theme = "catppuccin",
-	transparency = false,
+	-- theme = "",
+	transparency = true,
 }
 
 M.plugins = {
-	["github/copilot.vim"] = {},
+	["github/copilot.vim"] = { lazy = false },
 	["nvim-neorg/neorg"] = {
 		ft = "norg",
 		after = "nvim-treesitter",
@@ -30,15 +30,9 @@ M.plugins = {
 		end,
 		requires = "nvim-lua/plenary.nvim",
 	},
-	["nvim-treesitter/nvim-treesitter"] = {
-		override_options = {
-			ensure_installed = {
-				"lua",
-				"go",
-				"python",
-			},
-		},
-	},
+	-- ["nvim-treesitter/nvim-treesitter"] = {
+	-- override_options = { auto_install = true, exclude = { "sql" } },
+	-- },
 	-- LSP Stuff
 	["williamboman/mason.nvim"] = {
 		override_options = {
@@ -66,10 +60,9 @@ M.plugins = {
 		},
 	},
 	["glepnir/lspsaga.nvim"] = {
+		lazy = false,
 		config = function()
-			local saga = require("lspsaga")
-			saga.init_lsp_saga()
-			vim.diagnostic.config({ virtual_text = false })
+			require("lspsaga").setup({})
 		end,
 	},
 	["neovim/nvim-lspconfig"] = {
@@ -79,6 +72,7 @@ M.plugins = {
 		end,
 	},
 	["RRethy/vim-illuminate"] = {
+		lazy = false,
 		config = function()
 			require("illuminate").configure({
 				providers = { "lsp", "treesitter", "regex" },
@@ -88,6 +82,7 @@ M.plugins = {
 		end,
 	},
 	["jose-elias-alvarez/null-ls.nvim"] = {
+		lazy = false,
 		after = "nvim-lspconfig",
 		config = function()
 			require("custom.plugins.null_ls").setup()
@@ -110,7 +105,7 @@ M.plugins = {
 			},
 		},
 	},
-	["kyazdani42/nvim-tree.lua"] = {
+	["nvim-tree/nvim-tree.lua"] = {
 		override_options = {
 			git = { enable = true, ignore = false },
 			renderer = { highlight_git = true, icons = { show = { git = true } } },
@@ -120,7 +115,7 @@ M.plugins = {
 			respect_buf_cwd = true,
 		},
 	},
-	["folke/which-key.nvim"] = { disable = false },
+	["folke/which-key.nvim"] = { override_options = { lazy = false, enable = true } },
 
 	["kylechui/nvim-surround"] = {
 		config = function()

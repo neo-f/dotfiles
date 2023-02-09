@@ -10,19 +10,43 @@ M.additional_lspconfig = {
 	},
 	n = {
 		--  LSP
-		["<leader>lj"] = {
-			"<cmd>Lspsaga diagnostic_jump_next<CR>",
-			"   Next Diagnostic",
-		},
-		["<leader>lk"] = {
+		["lk"] = {
 			"<cmd>Lspsaga diagnostic_jump_prev<CR>",
-			"   Prev Diagnostic",
+			"   Prev Diagnostic",
 		},
-		["<leader>la"] = {
+		["lj"] = {
+			"<cmd>Lspsaga diagnostic_jump_next<CR>",
+			"   Next Diagnostic",
+		},
+		["<leader>sl"] = {
+			"<cmd>Lspsaga show_line_diagnostics<CR>",
+			"   Show Line Diagnostics",
+		},
+		["<leader>sc"] = {
+			"<cmd>Lspsaga show_cursor_diagnostics<CR>",
+			"   Show Cursor Diagnostics",
+		},
+		["<leader>sb"] = {
+			"<cmd>Lspsaga show_buf_diagnostics<CR>",
+			"   Show Buffer Diagnostics",
+		},
+		["<leader>o"] = {
+			"<cmd>Lspsaga outline<CR>",
+			"   Show Outline",
+		},
+		["<leader>ci"] = {
+			"<cmd>Lspsaga incoming_calls<CR>",
+			"   Show Incoming Calls",
+		},
+		["<leader>co"] = {
+			"<cmd>Lspsaga outgoing_calls<CR>",
+			"   Show Outgoing Calls",
+		},
+		["<leader>ca"] = {
 			"<cmd>Lspsaga code_action<CR>",
-			"   Lsp Code Action",
+			"   Show Code Actions",
 		},
-		["<leader>lf"] = {
+		["gh"] = {
 			"<cmd>Lspsaga lsp_finder<CR>",
 			"   Lsp Finder",
 		},

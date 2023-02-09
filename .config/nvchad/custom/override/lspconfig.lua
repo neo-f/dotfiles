@@ -2,7 +2,8 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
-local servers = { "gopls", "rust_analyzer", "clangd", "golangci_lint_ls", "pyright" }
+local servers =
+	{ "gopls", "rust_analyzer", "clangd", "golangci_lint_ls", "pyright", "svelte", "tailwindcss", "elixirls" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
@@ -13,7 +14,27 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+lspconfig.elixirls.setup({
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+	end,
+	capabilities = capabilities,
+	cmd = { "/Users/neo/.local/share/nvim/mason/bin/elixir-ls" },
+})
+
+lspconfig.emmet_ls.setup({
+	filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" },
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+	end,
+	capabilities = capabilities,
+})
+
 lspconfig.jsonls.setup({
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+	end,
+	capabilities = capabilities,
 	settings = {
 		json = {
 			schemas = require("schemastore").json.schemas(),
@@ -22,6 +43,10 @@ lspconfig.jsonls.setup({
 	},
 })
 lspconfig.yamlls.setup({
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+	end,
+	capabilities = capabilities,
 	settings = {
 		yaml = {
 			hover = true,

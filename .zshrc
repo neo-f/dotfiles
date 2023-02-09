@@ -39,18 +39,23 @@ znap eval brew_ "/opt/homebrew/bin/brew shellenv"
 znap eval zoxide_ 'zoxide init zsh'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-znap eval starship_ 'starship init zsh'
-znap prompt
+znap eval starship 'starship init zsh --print-full-init'
 
-alias vi='lvim'
+alias vi='nvim'
 alias ls='exa' l='exa -lbF --git' la='l -a' ll='exa -lbhHigUmuS --time-style=long-iso --git --color-scale' lla='ll -a' lr='exa -R' lt='exa -T --level=5'
-alias k='kubectl'
 alias lg='lazygit'
 alias t='tmux attach -t NEO || tmux new -s NEO'
 alias kssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
 alias diff="kitty +kitten diff"
 alias bup='brew update && brew upgrade --greedy'
+
+alias k='kubectl'
+alias kubectl="kubecolor"
+
+kga(){
+  kubecolor get po -o wide -lrdm_app=voc-${1}
+}
 
 
 gitt () {
@@ -108,5 +113,5 @@ po(){
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 }
 pf(){
-  unset http_proxy https_proxy ALL_PROXY
+  unset http_proxy https_proxy all_proxy
 }

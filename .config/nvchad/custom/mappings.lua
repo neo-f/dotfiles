@@ -28,8 +28,8 @@ M.comment = {
 M.lspconfig = {
   n = {
     ["gr"] = { "<cmd>Telescope lsp_references<CR>", "lsp references" },
-  ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "   Prev Diagnostic" },
-  ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "   Next Diagnostic" },
+    ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "   Prev Diagnostic" },
+    ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "   Next Diagnostic" },
   },
 }
 

@@ -1,6 +1,5 @@
 local overrides = require("custom.configs.overrides")
 
----@type NvPluginConfig[]
 local plugins = {
 	-- Override plugin definition options
 	{ "folke/which-key.nvim", enabled = true },

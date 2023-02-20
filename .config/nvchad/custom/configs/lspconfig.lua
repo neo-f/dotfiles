@@ -16,6 +16,17 @@ local servers = {
 }
 
 local special_configs = {
+	["lua_ls"] = {
+
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
+				-- workspace = default_workspace,
+			},
+		},
+	},
 	["elixirls"] = {
 		cmd = { "~/.local/share/nvim/mason/bin/elixir-ls" },
 	},

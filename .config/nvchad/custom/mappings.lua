@@ -1,4 +1,5 @@
----@type MappingsConfig
+-- luacheck: globals vim
+
 local M = {}
 
 M.general = {

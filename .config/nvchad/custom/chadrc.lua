@@ -1,4 +1,4 @@
----@type ChadrcConfig
+-- luacheck: globals vim
 local M = {}
 
 -- Path to overriding theme and highlights files

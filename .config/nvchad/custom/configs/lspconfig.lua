@@ -3,8 +3,17 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 
-local servers =
-	{ "gopls", "rust_analyzer", "clangd", "golangci_lint_ls", "pyright", "svelte", "tailwindcss", "elixirls" }
+local servers = {
+	"gopls",
+	"rust_analyzer",
+	"clangd",
+	"golangci_lint_ls",
+	"pyright",
+	"svelte",
+	"tailwindcss",
+	"elixirls",
+	"lua_ls",
+}
 
 local special_configs = {
 	["elixirls"] = {

@@ -10,6 +10,9 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_tab_fallback = ""
+-- vim.g.copilot_filetypes = {
+-- 	["*"] = true,
+-- }
 -- vim.api.nvim_set_keymap("i", "<C-E>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 -- fold
 vim.opt.foldmethod = "expr"
@@ -22,12 +25,9 @@ vim.g.neovide_input_macos_alt_is_meta = true
 vim.g.neovide_input_use_logo = true
 vim.g.neovide_fullscreen = true
 
-autocmd("VimEnter", { command = "CompileNvTheme" })
 autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    vim.lsp.buf.format { async = true }
-  end,
+	pattern = "*",
+	callback = function()
+		vim.lsp.buf.format({ async = true })
+	end,
 })
-
--- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]

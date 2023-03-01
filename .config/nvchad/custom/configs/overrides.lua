@@ -52,8 +52,14 @@ M.treesitter = {
 		"html",
 		"css",
 		"javascript",
+		"markdown",
+		"markdown_inline",
 	},
 	auto_install = true,
+	indent = {
+		enable = true,
+		disable = { "python" },
+	},
 }
 
 M.nvterm = {

@@ -30,6 +30,7 @@ znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source djui/alias-tips
+znap source johanhaleby/kubetail
 
 znap compdef _rustup 'rustup completions zsh'
 znap compdef _cargo  'rustup completions zsh cargo'
@@ -115,3 +116,5 @@ po(){
 pf(){
   unset http_proxy https_proxy all_proxy
 }
+export PATH=$PATH:/Users/neo/.spicetify
+fastfetch

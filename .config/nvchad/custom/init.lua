@@ -30,6 +30,6 @@ vim.g.neovide_fullscreen = true
 autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function()
-		vim.lsp.buf.format({ async = true })
+		vim.lsp.buf.format()
 	end,
 })

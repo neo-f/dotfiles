@@ -8,12 +8,13 @@ local b = null_ls.builtins
 
 local sources = {
 	-- Golang
-	b.formatting.goimports,
-	b.formatting.golines.with({ extra_args = { "-m", "250" }, filetypes = { "go" } }),
-	b.diagnostics.golangci_lint.with({}),
+	-- b.formatting.goimports,
+	b.formatting.golines.with({ extra_args = { "-m", "251" }, filetypes = { "go" } }),
+	b.code_actions.gomodifytags,
 	-- Python
 	b.formatting.black.with({ extra_args = { "--fast" }, filetypes = { "python" } }),
 	b.formatting.isort.with({ extra_args = { "--profile", "black" }, filetypes = { "python" } }),
+	b.diagnostics.ruff,
 	-- Rust
 	b.formatting.rustfmt.with({ extra_args = { "--edition", "2021" } }),
 	-- Lua

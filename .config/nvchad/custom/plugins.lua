@@ -7,6 +7,8 @@ local plugins = {
 	{ "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
 	{ "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
 	{ "NvChad/nvterm", opts = overrides.nvterm },
+	{ "hrsh7th/nvim-cmp", opts = overrides.cmp },
+	{ "numToStr/Comment.nvim", event = "VimEnter" },
 
 	{
 		"neovim/nvim-lspconfig",
@@ -36,13 +38,10 @@ local plugins = {
 				textobjects = {
 					select = {
 						enable = true,
-
 						-- Automatically jump forward to textobj, similar to targets.vim
 						lookahead = true,
-
 						keymaps = {
 							-- You can use the capture groups defined in textobjects.scm
-
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",
 							["ac"] = "@class.outer",
@@ -52,27 +51,11 @@ local plugins = {
 							["aa"] = "@parameter.outer",
 							["ia"] = "@parameter.inner",
 						},
-						-- You can choose the select mode (default is charwise 'v')
-						--
-						-- Can also be a function which gets passed a table with the keys
-						-- * query_string: eg '@function.inner'
-						-- * method: eg 'v' or 'o'
-						-- and should return the mode ('v', 'V', or '<c-v>') or a table
-						-- mapping query_strings to modes.
 						selection_modes = {
 							["@parameter.outer"] = "v", -- charwise
 							["@function.outer"] = "V", -- linewise
 							["@class.outer"] = "<c-v>", -- blockwise
 						},
-						-- If you set this to `true` (default is `false`) then any textobject is
-						-- extended to include preceding or succeeding whitespace. Succeeding
-						-- whitespace has priority in order to act similarly to eg the built-in
-						-- `ap`.
-						--
-						-- Can also be a function which gets passed a table with the keys
-						-- * query_string: eg '@function.inner'
-						-- * selection_mode: eg 'v'
-						-- and should return true of false
 						include_surrounding_whitespace = true,
 					},
 					swap = {
@@ -111,7 +94,27 @@ local plugins = {
 	},
 
 	-- Install a plugin
-	{ "github/copilot.vim", lazy = false },
+	{
+		"zbirenbaum/copilot.lua",
+		lazy = false,
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		lazy = false,
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
+
 	{ "kdheepak/lazygit.nvim", lazy = false },
 
 	{
@@ -162,6 +165,38 @@ local plugins = {
 		config = function()
 			require("fidget").setup({ text = { spinner = "moon" } })
 		end,
+	},
+	{
+		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
+		config = function()
+			require("zen-mode").setup({})
+		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		lazy = false,
+		build = ":Neorg sync-parsers",
+		opts = {
+			load = {
+				["core.defaults"] = {}, -- Loads default behaviour
+				["core.norg.journal"] = { config = { workspace = "base" } },
+				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.norg.completion"] = { config = { engine = "nvim-cmp" } },
+				["core.export"] = {},
+				["core.export.markdown"] = {},
+				["core.presenter"] = { config = { zen_mode = "zen-mode" } }, -- PPTlike
+				["core.norg.dirman"] = { -- Manages Neorg workspaces
+					config = {
+						workspaces = {
+							notes = "~/neorg/notes",
+							base = "~/neorg",
+						},
+					},
+				},
+			},
+		},
+		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 }
 

@@ -21,13 +21,16 @@ local sources = {
 	b.diagnostics.luacheck,
 	b.formatting.stylua,
 	-- SQL
-	b.formatting.sqlformat,
+	b.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }),
 	-- Shell
 	b.formatting.cmake_format,
 	b.formatting.shfmt.with({ extra_args = { "-i", "2", "-ci" } }),
 	b.diagnostics.shellcheck,
 	-- Markdown
-	b.diagnostics.markdownlint.with({ filetypes = { "markdown" } }),
+	b.diagnostics.markdownlint.with({
+		filetypes = { "markdown" },
+		extra_args = { "--disable", "MD013" },
+	}),
 	b.formatting.markdownlint.with({ filetypes = { "markdown" } }),
 	b.formatting.rustywind,
 	-- Javascript

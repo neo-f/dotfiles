@@ -5,7 +5,7 @@ local M = {}
 local highlights = require("custom.highlights")
 
 M.ui = {
-	theme_toggle = { "bearded-arc", "penumbra_light" },
+	theme_toggle = { "bearded-arc", "bearded-arc" },
 	theme = "bearded-arc",
 	hl_override = highlights.override,
 	hl_add = highlights.add,
@@ -13,6 +13,7 @@ M.ui = {
 		theme = "vscode_colored",
 	},
 	transparency = false,
+	lsp_semantic_tokens = true,
 }
 
 M.plugins = "custom.plugins"

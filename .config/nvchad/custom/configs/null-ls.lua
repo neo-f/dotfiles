@@ -8,8 +8,8 @@ local b = null_ls.builtins
 
 local sources = {
 	-- Golang
-	-- b.formatting.goimports,
-	b.formatting.golines.with({ extra_args = { "-m", "251" }, filetypes = { "go" } }),
+	b.formatting.goimports,
+	-- b.formatting.golines.with({ extra_args = { "-m", "251" }, filetypes = { "go" } }),
 	b.code_actions.gomodifytags,
 	-- Python
 	b.formatting.black.with({ extra_args = { "--fast" }, filetypes = { "python" } }),

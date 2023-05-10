@@ -41,3 +41,10 @@
 	repo = /Users/neo/.znap/zsh-autosuggestions
 	repo = /Users/neo/.znap/zsh-completions
 	repo = /Users/neo/.znap/zsh-syntax-highlighting
+	repo = /Users/neo/.znap/kubetail
+	repo = /Users/neo/.znap/djui/alias-tips
+	repo = /Users/neo/.znap/esc/conda-zsh-completion
+	repo = /Users/neo/.znap/johanhaleby/kubetail
+	repo = /Users/neo/.znap/zsh-users/zsh-autosuggestions
+	repo = /Users/neo/.znap/zsh-users/zsh-completions
+	repo = /Users/neo/.znap/zsh-users/zsh-syntax-highlighting

@@ -2,14 +2,12 @@ local overrides = require("custom.configs.overrides")
 
 local plugins = {
 	-- Override plugin definition options
-	{ "folke/which-key.nvim", enabled = true },
 	{ "williamboman/mason.nvim", opts = overrides.mason },
 	{ "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
 	{ "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
 	{ "NvChad/nvterm", opts = overrides.nvterm },
 	{ "hrsh7th/nvim-cmp", opts = overrides.cmp },
 	{ "numToStr/Comment.nvim", event = "VimEnter" },
-
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -180,13 +178,13 @@ local plugins = {
 		opts = {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
-				["core.norg.journal"] = { config = { workspace = "base" } },
-				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-				["core.norg.completion"] = { config = { engine = "nvim-cmp" } },
+				["core.journal"] = { config = { workspace = "base" } },
+				["core.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.completion"] = { config = { engine = "nvim-cmp" } },
 				["core.export"] = {},
 				["core.export.markdown"] = {},
 				["core.presenter"] = { config = { zen_mode = "zen-mode" } }, -- PPTlike
-				["core.norg.dirman"] = { -- Manages Neorg workspaces
+				["core.dirman"] = { -- Manages Neorg workspaces
 					config = {
 						workspaces = {
 							notes = "~/neorg/notes",

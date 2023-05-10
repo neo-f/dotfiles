@@ -13,6 +13,7 @@ local servers = {
 	"tailwindcss",
 	"elixirls",
 	"lua_ls",
+	"tsserver",
 }
 
 local special_configs = {

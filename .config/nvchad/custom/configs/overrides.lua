@@ -18,7 +18,6 @@ M.mason = {
 		"css-lsp",
 		"html-lsp",
 		"typescript-language-server",
-		"deno",
 		"tailwindcss-language-server",
 		"prettier",
 		"svelte-language-server",
@@ -29,6 +28,11 @@ M.mason = {
 		"goimports",
 		"golangci-lint-langserver",
 		"gopls",
+
+		"ruff-lsp",
+		"pyright",
+		"black",
+		"isort",
 	},
 }
 

@@ -6,24 +6,6 @@ M.general = {
 	},
 }
 
--- M.comment = {
--- 	n = {
--- 		["gcc"] = {
--- 			function()
--- 				require("Comment.api").toggle.linewise.current()
--- 			end,
--- 			"toggle comment",
--- 		},
--- 	},
---
--- 	v = {
--- 		["gc"] = {
--- 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
--- 			"toggle comment",
--- 		},
--- 	},
--- }
-
 M.git = {
 	n = {
 		["<leader>gc"] = { "<cmd>Telescope git_commits<CR>", "  git commits" },
@@ -37,18 +19,12 @@ M.telescope = {
 	n = {
 		["<leader>fk"] = { "<cmd>Telescope keymaps<CR>", " find keymaps" },
 		["<leader>fs"] = { "<cmd>Telescope lsp_document_symbols<CR>", " find document symbols" },
+		["<leader>fS"] = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", " find workspace symbols" },
 	},
 }
 
 -- more keybinds!
 M.lspconfig = {
-	i = {
-		["<C-e>"] = {
-			"copilot#Accept('<CR>')",
-			"   copilot accept",
-			opts = { expr = true, silent = true, replace_keycodes = false },
-		},
-	},
 	n = {
 		["<leader>o"] = { "<cmd>Lspsaga outline<CR>", "   Show Outline" },
 		--  LSP

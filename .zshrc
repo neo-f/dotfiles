@@ -22,6 +22,7 @@ setopt HIST_IGNORE_DUPS
 znap source zap-zsh/supercharge
 znap source zap-zsh/exa
 znap source zap-zsh/sudo
+# znap source zap-zsh/fzf
 znap source zap-zsh/completions
 znap source wintermi/zsh-brew
 znap source wintermi/zsh-rust
@@ -39,8 +40,6 @@ znap source conda-incubator/conda-zsh-completion
 znap fpath _kubectl 'kubectl completion zsh'
 znap fpath _kind 'kind completion zsh'
 znap fpath _helm 'helm completion zsh'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 znap eval _brew "/opt/homebrew/bin/brew shellenv"
 znap eval _zoxide 'zoxide init zsh'

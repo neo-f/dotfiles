@@ -26,13 +26,12 @@ M.telescope = {
 -- more keybinds!
 M.lspconfig = {
 	n = {
-		["<leader>o"] = { "<cmd>Lspsaga outline<CR>", "   Show Outline" },
-		--  LSP
-		["gr"] = { "<cmd>Telescope lsp_references<CR>", "  lsp references" },
-		["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "  Prev Diagnostic" },
-		["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "  Next Diagnostic" },
-		["<leader>la"] = { "<cmd>Lspsaga code_action<CR>", "   Show Code Actions" },
-		["<leader>lf"] = { "<cmd>Lspsaga lsp_finder<CR>", "   Lsp Finder" },
+		["gr"] = { "<cmd>Telescope lsp_references<CR>", "  lsp references" },
+		["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "  Prev Diagnostic" },
+		["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "  Next Diagnostic" },
+		["<leader>lo"] = { "<cmd>Lspsaga outline<CR>", "  Show Outline" },
+		["<leader>la"] = { "<cmd>Lspsaga code_action<CR>", "  Show Code Actions" },
+		["<leader>lf"] = { "<cmd>Lspsaga lsp_finder<CR>", "  Lsp Finder" },
 		["<leader>lr"] = {
 			function()
 				require("nvchad_ui.renamer").open()
@@ -44,6 +43,23 @@ M.lspconfig = {
 				vim.diagnostic.setloclist()
 			end,
 			"   Lsp Quickfix",
+		},
+	},
+}
+
+M.test = {
+	n = {
+		["<leader>tf"] = {
+			function()
+				require("neotest").run.run(vim.fn.expand("%"))
+			end,
+			"󰤑 Test the current File",
+		},
+		["<leader>tt"] = {
+			function()
+				require("neotest").run.run()
+			end,
+			"󰤑 Test the Nearest Test",
 		},
 	},
 }

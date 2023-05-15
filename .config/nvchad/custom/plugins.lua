@@ -6,7 +6,24 @@ local plugins = {
 	{ "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
 	{ "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
 	{ "NvChad/nvterm", opts = overrides.nvterm },
-	{ "hrsh7th/nvim-cmp", opts = overrides.cmp },
+	{
+		"hrsh7th/nvim-cmp",
+		opts = overrides.cmp,
+		dependencies = {
+			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-calc",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-vsnip",
+			"delphinus/cmp-ctags",
+			"hrsh7th/cmp-nvim-lsp-document-symbol",
+			"ray-x/cmp-treesitter",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			{ "jcdickinson/codeium.nvim", config = true },
+		},
+	},
 	{ "numToStr/Comment.nvim", event = "VimEnter" },
 	{
 		"neovim/nvim-lspconfig",
@@ -23,6 +40,23 @@ local plugins = {
 		config = function()
 			require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
+		end,
+	},
+	{
+		"jonahgoldwastaken/copilot-status.nvim",
+		dependencies = { "copilot.lua" },
+		event = "BufReadPost",
+		config = function()
+			require("copilot_status").setup({
+				icons = {
+					idle = " ",
+					error = " ",
+					offline = " ",
+					warning = "𥉉 ",
+					loading = " ",
+				},
+				debug = false,
+			})
 		end,
 	},
 
@@ -91,23 +125,64 @@ local plugins = {
 		end,
 	},
 
-	-- Install a plugin
+	-- -- Install a plugin
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	lazy = false,
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false },
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	lazy = false,
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- },
 	{
 		"zbirenbaum/copilot.lua",
-		lazy = false,
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
+				suggestion = {
+					enabled = false,
+					auto_trigger = false,
+					keymap = {
+						-- accept = "<Tab>",
+						accept_word = false,
+						accept_line = false,
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				panel = {
+					enabled = false,
+				},
+				server_opts_overrides = {
+					trace = "verbose",
+					settings = {
+						advanced = {
+							listCount = 3, -- #completions for panel  listCount = 3,          -- #completions for panel  listCount = 3,          -- #completions for panel
+							inlineSuggestCount = 3, -- #completions for getCompletions
+						},
+					},
+				},
 			})
 		end,
 	},
 	{
 		"zbirenbaum/copilot-cmp",
-		lazy = false,
-		after = { "copilot.lua" },
+		event = "VeryLazy",
+		dependencies = { "zbirenbaum/copilot.lua" },
 		config = function()
 			require("copilot_cmp").setup()
 		end,
@@ -129,6 +204,68 @@ local plugins = {
 			require("illuminate").configure({
 				filetypes_denylist = { "NvimTree", "Mason" },
 				delay = 100,
+			})
+		end,
+	},
+	{
+		"RRethy/vim-illuminate",
+		event = "BufReadPost",
+		dependencies = "nvim-treesitter",
+		config = function()
+			local status, illuminate = pcall(require, "illuminate")
+
+			if not status then
+				return
+			end
+
+			illuminate.configure({
+				-- providers: provider used to get references in the buffer, ordered by priority
+				providers = {
+					"lsp",
+					"treesitter",
+					"regex",
+				},
+				-- delay: delay in milliseconds
+				delay = 100,
+				-- filetype_overrides: filetype specific overrides.
+				-- The keys are strings to represent the filetype while the values are tables that
+				-- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
+				filetype_overrides = {},
+				-- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
+				filetypes_denylist = {
+					"dirvish",
+					"fugitive",
+					"alpha",
+					"NvimTree",
+					"packer",
+					"neogitstatus",
+					"Trouble",
+					"lir",
+					"Outline",
+					"spectre_panel",
+					"toggleterm",
+					"DressingSelect",
+					"TelescopePrompt",
+					"aerial",
+				},
+				-- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
+				filetypes_allowlist = {},
+				-- modes_denylist: modes to not illuminate, this overrides modes_allowlist
+				modes_denylist = {},
+				-- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
+				modes_allowlist = {},
+				-- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
+				-- Only applies to the 'regex' provider
+				-- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+				providers_regex_syntax_denylist = {},
+				-- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
+				-- Only applies to the 'regex' provider
+				-- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+				providers_regex_syntax_allowlist = {},
+				-- under_cursor: whether or not to illuminate under the cursor
+				under_cursor = true,
+				-- max_file_lines: max number of lines in a file to illuminate
+				max_file_lines = nil,
 			})
 		end,
 	},
@@ -195,6 +332,37 @@ local plugins = {
 			},
 		},
 		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
+	{
+		"nvim-neotest/neotest",
+		ft = { "go" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-neotest/neotest-go",
+		},
+		config = function()
+			-- get neotest namespace (api call creates or returns namespace)
+			local neotest_ns = vim.api.nvim_create_namespace("neotest")
+			vim.diagnostic.config({
+				virtual_text = {
+					format = function(diagnostic)
+						local message =
+							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+						return message
+					end,
+				},
+			}, neotest_ns)
+			require("neotest").setup({
+				-- your neotest config here
+				adapters = {
+					require("neotest-go")({
+						args = { "-count=1", "-coverprofile coverage.out", "-covermode=count" },
+					}),
+				},
+			})
+		end,
 	},
 }
 

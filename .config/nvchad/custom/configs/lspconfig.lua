@@ -4,7 +4,6 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 
 local servers = {
-	"gopls",
 	"rust_analyzer",
 	"clangd",
 	"golangci_lint_ls",
@@ -17,8 +16,35 @@ local servers = {
 }
 
 local special_configs = {
+	["gopls"] = {
+		filetypes = { "go", "gomod", "gowork", "gotmpl" },
+		handlers = {
+			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+		},
+		settings = {
+			gopls = {
+				-- buildFlags = { "-tags=wireinject" },
+				usePlaceholders = true,
+				analyses = {
+					nilness = true,
+					shadow = true,
+					unusedparams = true,
+					unusewrites = true,
+				},
+				staticcheck = true,
+				codelenses = {
+					references = true,
+					test = true,
+					tidy = true,
+					upgrade_dependency = true,
+					generate = true,
+				},
+				gofumpt = true,
+			},
+		},
+	},
 	["lua_ls"] = {
-
 		settings = {
 			Lua = {
 				diagnostics = {

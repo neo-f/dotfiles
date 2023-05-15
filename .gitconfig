@@ -48,3 +48,14 @@
 	repo = /Users/neo/.znap/zsh-users/zsh-autosuggestions
 	repo = /Users/neo/.znap/zsh-users/zsh-completions
 	repo = /Users/neo/.znap/zsh-users/zsh-syntax-highlighting
+	repo = /Users/neo/.znap/MichaelAquilina/zsh-you-should-use
+	repo = /Users/neo/.znap/chivalryq/git-alias
+	repo = /Users/neo/.znap/conda-incubator/conda-zsh-completion
+	repo = /Users/neo/.znap/ohmyzsh/ohmyzsh
+	repo = /Users/neo/.znap/wintermi/zsh-brew
+	repo = /Users/neo/.znap/wintermi/zsh-rust
+	repo = /Users/neo/.znap/zap-zsh/completions
+	repo = /Users/neo/.znap/zap-zsh/exa
+	repo = /Users/neo/.znap/zap-zsh/fzf
+	repo = /Users/neo/.znap/zap-zsh/sudo
+	repo = /Users/neo/.znap/zap-zsh/supercharge

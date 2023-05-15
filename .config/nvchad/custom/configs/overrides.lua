@@ -13,6 +13,7 @@ M.mason = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
+		"luacheck",
 
 		-- web dev stuff
 		"css-lsp",
@@ -25,11 +26,11 @@ M.mason = {
 		"eslint",
 		"rustywind",
 
+		"gopls",
 		"goimports",
 		"golangci-lint-langserver",
-		"gopls",
 
-		"ruff-lsp",
+		"ruff",
 		"pyright",
 		"black",
 		"isort",
@@ -42,18 +43,48 @@ M.nvimtree = {
 		enable = true,
 		ignore = false,
 	},
-	renderer = {
-		highlight_git = true,
-		icons = { show = { git = true } },
-	},
+	hijack_unnamed_buffer_when_opening = true,
+	hijack_cursor = true,
 	diagnostics = {
 		enable = true,
+		show_on_dirs = false,
+		debounce_delay = 50,
+		icons = {
+			hint = "",
+			info = "",
+			warning = "",
+			error = "",
+		},
 	},
 	sync_root_with_cwd = true,
-	respect_buf_cwd = true,
-
-	update_focused_file = {
-		update_root = true,
+	renderer = {
+		highlight_opened_files = "name",
+		highlight_git = true,
+		group_empty = true,
+		icons = {
+			show = {
+				git = true,
+			},
+			glyphs = {
+				git = {
+					unstaged = "",
+					-- unstaged = "",
+					staged = "",
+					unmerged = "",
+					renamed = "➜",
+					-- untracked = "",
+					untracked = "",
+					deleted = "",
+					ignored = "◌",
+				},
+			},
+		},
+	},
+	tab = {
+		sync = {
+			open = true,
+			close = true,
+		},
 	},
 }
 
@@ -76,13 +107,18 @@ M.treesitter = {
 
 M.nvterm = {
 	terminals = {
+		shell = vim.o.shell,
 		type_opts = {
 			float = {
-				row = 0.1,
-				col = 0.1,
-				width = 0.8,
+				relative = "editor",
+				row = 0.16,
+				col = 0.09,
+				width = 0.75,
 				height = 0.7,
+				border = "single",
 			},
+			horizontal = { location = "rightbelow", split_ratio = 0.3 },
+			vertical = { location = "rightbelow", split_ratio = 0.5 },
 		},
 	},
 }
@@ -91,10 +127,17 @@ M.cmp = {
 	sources = {
 		{ name = "copilot" },
 		{ name = "nvim_lsp" },
+		{ name = "codeium" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
+		{ name = "treesitter" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lsp_document_symbol" },
+		{ name = "calc" },
+		{ name = "path" },
+		{ name = "vim_lsp" },
 	},
 	mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -105,10 +148,7 @@ M.cmp = {
 			else
 				fallback()
 			end
-		end, {
-			"i",
-			"s",
-		}),
+		end, { "i", "s" }),
 	},
 }
 

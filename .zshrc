@@ -4,6 +4,7 @@ source ~/.znap/znap.zsh
 
 bindkey -e
 
+export CC=gcc-13
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
@@ -22,7 +23,6 @@ setopt HIST_IGNORE_DUPS
 znap source zap-zsh/supercharge
 znap source zap-zsh/exa
 znap source zap-zsh/sudo
-# znap source zap-zsh/fzf
 znap source zap-zsh/completions
 znap source wintermi/zsh-brew
 znap source wintermi/zsh-rust
@@ -36,6 +36,8 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source chivalryq/git-alias
 znap source MichaelAquilina/zsh-you-should-use
 znap source conda-incubator/conda-zsh-completion
+source ~/.fzf.zsh
+
 
 znap fpath _kubectl 'kubectl completion zsh'
 znap fpath _kind 'kind completion zsh'
@@ -125,3 +127,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+po

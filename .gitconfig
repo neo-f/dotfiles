@@ -59,3 +59,5 @@
 	repo = /Users/neo/.znap/zap-zsh/fzf
 	repo = /Users/neo/.znap/zap-zsh/sudo
 	repo = /Users/neo/.znap/zap-zsh/supercharge
+	repo = /Users/neo/.znap/Aloxaf/fzf-tab
+	repo = /Users/neo/.znap/zsh-users/zsh-history-substring-search

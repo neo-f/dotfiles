@@ -125,27 +125,6 @@ local plugins = {
 		end,
 	},
 
-	-- -- Install a plugin
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	lazy = false,
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("copilot").setup({
-	-- 			suggestion = { enabled = false },
-	-- 			panel = { enabled = false },
-	-- 		})
-	-- 	end,
-	-- },
-	-- {
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	lazy = false,
-	-- 	after = { "copilot.lua" },
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- },
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",

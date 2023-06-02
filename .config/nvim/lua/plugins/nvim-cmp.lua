@@ -68,7 +68,7 @@ return {
     }
     opts.completion = {
       side_padding = 1,
-      scrollbar = false,
+      scrollbar = true,
     }
     opts.formatting = {
       format = function(_, item)

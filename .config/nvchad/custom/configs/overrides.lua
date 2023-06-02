@@ -128,6 +128,7 @@ M.cmp = {
 		{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "codeium" },
+		{ name = "emoji" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },

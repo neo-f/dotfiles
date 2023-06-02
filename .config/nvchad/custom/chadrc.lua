@@ -12,7 +12,7 @@ M.ui = {
 	statusline = {
 		theme = "vscode_colored",
 	},
-	transparency = false,
+	transparency = true,
 	lsp_semantic_tokens = true,
 }
 

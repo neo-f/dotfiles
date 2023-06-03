@@ -1,6 +1,4 @@
 return {
-  { "ThePrimeagen/refactoring.nvim" },
-
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function()
@@ -11,7 +9,6 @@ return {
           -- Go
           nls.diagnostics.golangci_lint,
           nls.formatting.goimports,
-          nls.code_actions.refactoring,
           -- b.formatting.golines.with({ extra_args = { "-m", "251" }, filetypes = { "go" } }),
           nls.code_actions.gomodifytags,
 

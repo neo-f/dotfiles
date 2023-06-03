@@ -1,12 +1,20 @@
 return {
   {
     "akinsho/toggleterm.nvim",
-    version = "*",
-    lazy = false,
+    config = true,
+    cmd = "ToggleTerm",
     keys = {
-      { "<A-i>", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Term (Float)", mode = { "n", "t" } },
+      { "<A-i>", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal" },
     },
-    opts = {--[[ things you want to change go here]]
+    opts = {
+      open_mapping = [[<A-i>]],
+      direction = "float",
+      shade_filetypes = {},
+      hide_numbers = true,
+      insert_mappings = true,
+      terminal_mappings = true,
+      start_in_insert = true,
+      close_on_exit = true,
     },
   },
 }

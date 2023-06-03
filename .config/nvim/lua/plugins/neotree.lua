@@ -1,92 +1,23 @@
-local icons = {
-  ActiveLSP = "",
-  ActiveTS = "",
-  ArrowLeft = "",
-  ArrowRight = "",
-  Bookmarks = "",
-  BufferClose = "󰅖",
-  DapBreakpoint = "",
-  DapBreakpointCondition = "",
-  DapBreakpointRejected = "",
-  DapLogPoint = ".>",
-  DapStopped = "󰁕",
-  Debugger = "",
-  DefaultFile = "󰈙",
-  Diagnostic = "󰒡",
-  DiagnosticError = "",
-  DiagnosticHint = "󰌵",
-  DiagnosticInfo = "󰋼",
-  DiagnosticWarn = "",
-  Ellipsis = "…",
-  FileNew = "",
-  FileModified = "",
-  FileReadOnly = "",
-  FoldClosed = "",
-  FoldOpened = "",
-  FoldSeparator = " ",
-  FolderClosed = "",
-  FolderEmpty = "",
-  FolderOpen = "",
-  Git = "󰊢",
-  GitAdd = "",
-  GitBranch = "",
-  GitChange = "",
-  GitConflict = "",
-  GitDelete = "",
-  GitIgnored = "◌",
-  GitRenamed = "➜",
-  GitSign = "▎",
-  GitStaged = "✓",
-  GitUnstaged = "✗",
-  GitUntracked = "★",
-  LSPLoaded = "",
-  LSPLoading1 = "",
-  LSPLoading2 = "󰀚",
-  LSPLoading3 = "",
-  MacroRecording = "",
-  Package = "󰏖",
-  Paste = "󰅌",
-  Refresh = "",
-  Search = "",
-  Selected = "❯",
-  Session = "󱂬",
-  Sort = "󰒺",
-  Spellcheck = "󰓆",
-  Tab = "󰓩",
-  TabClose = "󰅙",
-  Terminal = "",
-  Window = "",
-  WordFile = "󰈭",
-}
-
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
-    opts = function(_, opts)
-      opts.default_component_configs = {
+    opts = {
+      close_if_last_window = true,
+      filesystem = { follow_current_file = true },
+      buffers = { follow_current_file = true },
+      default_component_configs = {
         icon = {
-          folder_closed = icons["FolderClosed"],
-          folder_open = icons["FolderOpen"],
-          folder_empty = icons["FolderEmpty"],
-          folder_empty_open = icons["FolderEmpty"],
-          default = icons["DefaultFile"],
+          folder_empty = "󰜌",
+          folder_empty_open = "󰜌",
         },
-        modified = { symbol = icons["FileModified"] },
         git_status = {
           symbols = {
-            added = icons["GitAdd"],
-            deleted = icons["GitDelete"],
-            modified = icons["GitChange"],
-            renamed = icons["GitRenamed"],
-            untracked = icons["GitUntracked"],
-            ignored = icons["GitIgnored"],
-            unstaged = icons["GitUnstaged"],
-            staged = icons["GitStaged"],
-            conflict = icons["GitConflict"],
+            renamed = "󰁕",
+            unstaged = "󰄱",
           },
         },
-      }
-      opts.document_symbols = {
+      },
+      document_symbols = {
         kinds = {
           File = { icon = "󰈙", hl = "Tag" },
           Namespace = { icon = "󰌗", hl = "Include" },
@@ -105,14 +36,14 @@ return {
           TypeParameter = { icon = "󰊄", hl = "Type" },
           StaticMethod = { icon = "󰠄 ", hl = "Function" },
         },
-      }
+      },
       -- Add this section only if you've configured source selector.
-      opts.source_selector = {
+      source_selector = {
         sources = {
           { source = "filesystem", display_name = " 󰉓 Files " },
           { source = "git_status", display_name = " 󰊢 Git " },
         },
-      }
-    end,
+      },
+    },
   },
 }

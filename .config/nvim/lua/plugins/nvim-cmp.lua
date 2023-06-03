@@ -70,6 +70,7 @@ return {
       side_padding = 1,
       scrollbar = true,
     }
+
     opts.formatting = {
       format = function(_, item)
         local icon = icons[item.kind] or ""

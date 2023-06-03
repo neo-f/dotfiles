@@ -21,15 +21,7 @@ local gopls = {
   },
 }
 
-local lua_ls = {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
-}
+local lua_ls = { settings = { Lua = { diagnostics = { globals = { "vim" } } } } }
 
 local yammls = {
   settings = {

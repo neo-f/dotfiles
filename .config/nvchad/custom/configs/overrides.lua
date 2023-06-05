@@ -26,9 +26,9 @@ M.mason = {
 		"eslint",
 		"rustywind",
 
-		"gopls",
-		"goimports",
-		"golangci-lint-langserver",
+		-- "gopls",
+		-- "goimports",
+		-- "golangci-lint-langserver",
 
 		"ruff",
 		"pyright",

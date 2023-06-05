@@ -5,8 +5,8 @@ local M = {}
 local highlights = require("custom.highlights")
 
 M.ui = {
-	theme_toggle = { "bearded-arc", "bearded-arc" },
-	theme = "bearded-arc",
+	theme_toggle = { "catppuccin", "catppuccin" },
+	theme = "catppuccin",
 	hl_override = highlights.override,
 	hl_add = highlights.add,
 	statusline = {

@@ -26,7 +26,7 @@ local progress = { "progress", cond = conditions.buffer_not_empty, color = { gui
 local location = { "location", cond = conditions.buffer_not_empty, color = { gui = "bold" } }
 
 local filetype = { "filetype", icon_only = true }
-local filename = { "filename", cond = conditions.buffer_not_empty, color = { gui = "bold" } }
+local filename = { "filename", color = { gui = "bold" }, path = 1 }
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -37,7 +37,7 @@ local navic = {
     return require("nvim-navic").get_location()
   end,
   cond = function()
-    return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+    return package.loaded["nvim-navic"] and require("nvim-navic").is_available() and conditions.hide_in_width()
   end,
 }
 
@@ -120,9 +120,10 @@ return {
         globalstatus = true,
       },
       sections = {
-        lualine_a = { filesize, location, progress },
-        lualine_b = { branch, diff },
-        lualine_c = { filetype, filename, diagnostics, space, navic },
+        lualine_a = { { "mode", color = { gui = "bold" } } },
+
+        lualine_b = { filesize, location, progress, branch, diff },
+        lualine_c = { diagnostics, filetype, filename, space, navic },
         lualine_x = { noise_statement, noise_constant },
         lualine_y = { search_count, dap, lazy_status },
         lualine_z = { lsp_status },

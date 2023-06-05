@@ -24,7 +24,7 @@ local plugins = {
 			{ "jcdickinson/codeium.nvim", config = true },
 		},
 	},
-	{ "numToStr/Comment.nvim", event = "VimEnter" },
+	-- 	{ "numToStr/Comment.nvim", event = "VimEnter" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -40,23 +40,6 @@ local plugins = {
 		config = function()
 			require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
-		end,
-	},
-	{
-		"jonahgoldwastaken/copilot-status.nvim",
-		dependencies = { "copilot.lua" },
-		event = "BufReadPost",
-		config = function()
-			require("copilot_status").setup({
-				icons = {
-					idle = " ",
-					error = " ",
-					offline = " ",
-					warning = "𥉉 ",
-					loading = " ",
-				},
-				debug = false,
-			})
 		end,
 	},
 
@@ -312,37 +295,7 @@ local plugins = {
 		},
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
-	{
-		"nvim-neotest/neotest",
-		ft = { "go" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-neotest/neotest-go",
-		},
-		config = function()
-			-- get neotest namespace (api call creates or returns namespace)
-			local neotest_ns = vim.api.nvim_create_namespace("neotest")
-			vim.diagnostic.config({
-				virtual_text = {
-					format = function(diagnostic)
-						local message =
-							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-						return message
-					end,
-				},
-			}, neotest_ns)
-			require("neotest").setup({
-				-- your neotest config here
-				adapters = {
-					require("neotest-go")({
-						args = { "-count=1", "-coverprofile coverage.out", "-covermode=count" },
-					}),
-				},
-			})
-		end,
-	},
+	{ import = "custom.configs.lang.go" },
 }
 
 return plugins

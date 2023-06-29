@@ -16,17 +16,19 @@ local conditions = {
   end,
 }
 
-local space = {
-  function()
-    return "%="
-  end,
-}
 local filesize = { "filesize", cond = conditions.buffer_not_empty, color = { gui = "bold" } }
 local progress = { "progress", cond = conditions.buffer_not_empty, color = { gui = "bold" } }
 local location = { "location", cond = conditions.buffer_not_empty, color = { gui = "bold" } }
 
 local filetype = { "filetype", icon_only = true }
 local filename = { "filename", color = { gui = "bold" }, path = 1 }
+
+local diff = {
+  "diff",
+  symbols = { added = icons.git.added, modified = icons.git.modified, removed = icons.git.removed },
+  cond = conditions.hide_in_width,
+}
+
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -62,7 +64,7 @@ local noise_constant = {
 
 local dap = {
   function()
-    return "  " .. require("dap").status()
+    return " " .. require("dap").status()
   end,
   cond = function()
     return package.loaded["dap"] and require("dap").status() ~= ""
@@ -74,12 +76,6 @@ local lazy_status = {
   require("lazy.status").updates,
   cond = require("lazy.status").has_updates,
   color = Util.fg("Special"),
-}
-
-local diff = {
-  "diff",
-  symbols = { added = icons.git.added, modified = icons.git.modified, removed = icons.git.removed },
-  cond = conditions.hide_in_width,
 }
 
 local lsp_status = {
@@ -100,7 +96,7 @@ local lsp_status = {
         table.insert(buf_client_names, client.name)
       end
     end
-    return table.concat(buf_client_names, " ")
+    return table.concat(buf_client_names, " | ")
   end,
   icon = "󰌘 ",
   cond = conditions.hide_in_width,
@@ -122,8 +118,8 @@ return {
       sections = {
         lualine_a = { { "mode", color = { gui = "bold" } } },
 
-        lualine_b = { filesize, location, progress, branch, diff },
-        lualine_c = { diagnostics, filetype, filename, space, navic },
+        lualine_b = { filesize, location, progress, branch },
+        lualine_c = { diff, diagnostics, filetype, filename, navic },
         lualine_x = { noise_statement, noise_constant },
         lualine_y = { search_count, dap, lazy_status },
         lualine_z = { lsp_status },

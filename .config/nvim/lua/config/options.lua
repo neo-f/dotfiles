@@ -7,3 +7,8 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.wildmode = "full"
 vim.opt.autochdir = true
+
+vim.opt.guifont = "Comic Code Ligatures:h15"
+vim.g.neovide_input_macos_alt_is_meta = true
+vim.g.neovide_input_use_logo = true
+vim.g.neovide_fullscreen = true

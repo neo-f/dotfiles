@@ -13,7 +13,7 @@ return {
           nls.code_actions.gomodifytags,
 
           -- Python
-          nls.formatting.black.with({ extra_args = { "--fast" }, filetypes = { "python" } }),
+          nls.formatting.black.with({ extra_args = { "--fast", "-l", "120" }, filetypes = { "python" } }),
           nls.formatting.isort.with({ extra_args = { "--profile", "black" }, filetypes = { "python" } }),
           nls.diagnostics.ruff,
 

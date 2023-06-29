@@ -14,6 +14,7 @@ export PATH=$PATH:$HOME/.spicetify
 export PATH=$PATH:$HOME/.docker/bin
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
 [[ -f ~/.cargo/env ]] && source ~/.cargo/env
 
 
@@ -21,9 +22,9 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 
 znap source zap-zsh/supercharge
-znap source zap-zsh/exa
 znap source zap-zsh/sudo
 znap source zap-zsh/completions
+znap source zap-zsh/exa
 znap source wintermi/zsh-brew
 znap source wintermi/zsh-rust
 
@@ -46,12 +47,13 @@ znap fpath _helm 'helm completion zsh'
 znap eval _brew "/opt/homebrew/bin/brew shellenv"
 znap eval _zoxide 'zoxide init zsh'
 znap eval _starship 'starship init zsh --print-full-init'
+
 znap prompt
 
 alias vi='nvim'
 alias ls='exa' l='exa -lbF --git' la='l -a' ll='exa -lbhHigUmuS --time-style=long-iso --git --color-scale' lla='ll -a' lr='exa -R' lt='exa -T --level=5'
 alias lg='lazygit'
-alias t='tmux attach -t NEO || tmux new -s NEO'
+alias t='tmux attach || tmux new'
 alias kssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
 alias diff="kitty +kitten diff"
@@ -112,19 +114,3 @@ pf(){
 }
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-po

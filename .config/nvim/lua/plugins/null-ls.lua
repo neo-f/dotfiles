@@ -1,45 +1,39 @@
 return {
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function()
+    opts = function(_, opts)
       local nls = require("null-ls").builtins
-      return {
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-        sources = {
-          -- Go
-          nls.diagnostics.golangci_lint,
-          nls.formatting.goimports,
-          -- b.formatting.golines.with({ extra_args = { "-m", "251" }, filetypes = { "go" } }),
-          nls.code_actions.gomodifytags,
+      vim.list_extend(opts.sources, {
+        -- Go
+        -- nls.diagnostics.golangci_lint,
 
-          -- Python
-          nls.formatting.black.with({ extra_args = { "--fast", "-l", "120" }, filetypes = { "python" } }),
-          nls.formatting.isort.with({ extra_args = { "--profile", "black" }, filetypes = { "python" } }),
-          nls.diagnostics.ruff,
+        -- Python
+        nls.formatting.black.with({ extra_args = { "--fast", "-l", "120" }, filetypes = { "python" } }),
+        nls.formatting.isort.with({ extra_args = { "--profile", "black" }, filetypes = { "python" } }),
+        nls.diagnostics.ruff,
 
-          -- Rust
-          nls.formatting.rustfmt.with({ extra_args = { "--edition", "2021" } }),
+        -- Rust
+        nls.formatting.rustfmt.with({ extra_args = { "--edition", "2021" } }),
 
-          -- Lua
-          nls.diagnostics.luacheck,
-          nls.formatting.stylua,
+        -- Lua
+        nls.diagnostics.luacheck,
+        nls.formatting.stylua,
 
-          -- SQL
-          nls.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }),
+        -- SQL
+        nls.formatting.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }),
 
-          -- Shell
-          nls.formatting.cmake_format,
-          nls.formatting.shfmt.with({ extra_args = { "-i", "2", "-ci" } }),
-          nls.diagnostics.shellcheck,
+        -- Shell
+        nls.formatting.cmake_format,
+        nls.formatting.shfmt.with({ extra_args = { "-i", "2", "-ci" } }),
+        nls.diagnostics.shellcheck,
 
-          -- Markdown
-          nls.diagnostics.markdownlint.with({ filetypes = { "markdown" }, extra_args = { "--disable", "MD013" } }),
-          nls.formatting.markdownlint.with({ filetypes = { "markdown" } }),
+        -- Markdown
+        nls.diagnostics.markdownlint.with({ filetypes = { "markdown" }, extra_args = { "--disable", "MD013" } }),
+        nls.formatting.markdownlint.with({ filetypes = { "markdown" } }),
 
-          -- Tailwind CSS
-          nls.formatting.rustywind,
-        },
-      }
+        -- Tailwind CSS
+        nls.formatting.rustywind,
+      })
     end,
   },
 }

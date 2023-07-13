@@ -18,11 +18,6 @@ return {
         "emmet-ls",
         "rustywind",
 
-        "gopls",
-        "goimports",
-        "golangci-lint",
-        "gotests",
-
         "ruff",
         "pyright",
         "black",

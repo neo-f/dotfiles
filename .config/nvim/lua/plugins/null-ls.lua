@@ -12,9 +12,6 @@ return {
         nls.formatting.isort.with({ extra_args = { "--profile", "black" }, filetypes = { "python" } }),
         nls.diagnostics.ruff,
 
-        -- Rust
-        nls.formatting.rustfmt.with({ extra_args = { "--edition", "2021" } }),
-
         -- Lua
         nls.diagnostics.luacheck,
         nls.formatting.stylua,

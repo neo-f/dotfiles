@@ -5,7 +5,8 @@ return {
       local nls = require("null-ls").builtins
       vim.list_extend(opts.sources, {
         -- Go
-        -- nls.diagnostics.golangci_lint,
+        nls.formatting.goimports,
+        nls.diagnostics.golangci_lint,
 
         -- Python
         nls.formatting.black.with({ extra_args = { "--fast", "-l", "120" }, filetypes = { "python" } }),

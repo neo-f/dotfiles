@@ -11,17 +11,11 @@ return {
         "css-lsp",
         "html-lsp",
 
-        "typescript-language-server",
         "tailwindcss-language-server",
 
         "svelte-language-server",
         "emmet-ls",
         "rustywind",
-
-        "ruff",
-        "pyright",
-        "black",
-        "isort",
       })
     end,
   },

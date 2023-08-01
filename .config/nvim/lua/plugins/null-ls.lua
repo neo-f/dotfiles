@@ -4,15 +4,6 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls").builtins
       vim.list_extend(opts.sources, {
-        -- Go
-        nls.formatting.goimports,
-        nls.diagnostics.golangci_lint,
-
-        -- Python
-        nls.formatting.black.with({ extra_args = { "--fast", "-l", "120" }, filetypes = { "python" } }),
-        nls.formatting.isort.with({ extra_args = { "--profile", "black" }, filetypes = { "python" } }),
-        nls.diagnostics.ruff,
-
         -- Lua
         nls.diagnostics.luacheck,
         nls.formatting.stylua,

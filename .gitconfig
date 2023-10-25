@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = neo-f
-	email = tmpgfw@gmail.com
+	email = itsneo1990@gmail.com
 [core]
 	autocrlf = false
 	whitespace = blank-at-eol,blank-at-eof,space-before-tab

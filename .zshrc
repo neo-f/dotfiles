@@ -4,7 +4,7 @@ source ~/.znap/znap.zsh
 
 bindkey -e
 
-export CC=gcc-13
+# export CC=gcc-13
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
@@ -101,10 +101,6 @@ killp(){
   lsof -t -i:$1 | xargs kill -9
 }
 
-
-################ dev
-alias ol='k logs -f -lapp.kubernetes.io/name=echomind-api'
-alias ow='watch kubecolor get po -lapp.kubernetes.io/name=echomind-api'
 
 po(){
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7891

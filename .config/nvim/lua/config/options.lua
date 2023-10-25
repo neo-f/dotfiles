@@ -7,8 +7,22 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.wildmode = "full"
 vim.opt.autochdir = true
+vim.opt.guifont = "Comic Code Ligatures:h18"
 
-vim.opt.guifont = "Comic Code Ligatures:h15"
-vim.g.neovide_input_macos_alt_is_meta = true
-vim.g.neovide_input_use_logo = true
-vim.g.neovide_fullscreen = true
+if vim.g.neovide then
+  vim.g.neovide_input_macos_alt_is_meta = true
+  vim.g.neovide_input_use_logo = true
+  vim.g.neovide_fullscreen = true
+
+  vim.g.neovide_scale_factor = 1.0
+  local change_scale_factor = function(delta)
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+  end
+
+  vim.keymap.set("n", "<C-=>", function()
+    change_scale_factor(1.15)
+  end)
+  vim.keymap.set("n", "<C-->", function()
+    change_scale_factor(1 / 1.15)
+  end)
+end

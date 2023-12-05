@@ -14,6 +14,9 @@ export PATH=$PATH:$HOME/.spicetify
 export PATH=$PATH:$HOME/.docker/bin
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export GOPROXY=goproxy.cn,direct
+
+export KUBECONFIG=~/.kube/config:~/.kube/config-old
 
 [[ -f ~/.cargo/env ]] && source ~/.cargo/env
 
@@ -51,7 +54,14 @@ znap eval _starship 'starship init zsh --print-full-init'
 znap prompt
 
 alias vi='nvim'
-alias ls='exa' l='exa -lbF --git' la='l -a' ll='exa -lbhHigUmuS --time-style=long-iso --git --color-scale' lla='ll -a' lr='exa -R' lt='exa -T --level=5'
+alias ls='exa' 
+alias l='exa -lbF --git' 
+alias la='l -a' 
+alias ll='exa -lbhHigUmuS --time-style=long-iso --git --color-scale' 
+alias lla='ll -a' 
+alias lr='exa -R' 
+alias lt='exa -T --level=5'
+alias lta='exa -T --level=5 -a'
 alias lg='lazygit'
 alias t='tmux attach || tmux new'
 alias kssh='kitty +kitten ssh'
@@ -111,3 +121,4 @@ pf(){
 
 
 alias bashly='docker run --rm -it --user $(id -u):$(id -g) --volume "$PWD:/app" dannyben/bashly'
+

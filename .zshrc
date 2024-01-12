@@ -14,9 +14,10 @@ export PATH=$PATH:$HOME/.spicetify
 export PATH=$PATH:$HOME/.docker/bin
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export PATH=/Users/neo/bin:$PATH
 export GOPROXY=goproxy.cn,direct
 
-export KUBECONFIG=~/.kube/config:~/.kube/config-old
+export KUBECONFIG=~/.kube/config:~/.kube/config-new:~/.kube/config-istio:~/.kube/config-dev:~/.kube/config-prod
 
 [[ -f ~/.cargo/env ]] && source ~/.cargo/env
 
@@ -27,7 +28,6 @@ setopt HIST_IGNORE_DUPS
 znap source zap-zsh/supercharge
 znap source zap-zsh/sudo
 znap source zap-zsh/completions
-znap source zap-zsh/exa
 znap source wintermi/zsh-brew
 znap source wintermi/zsh-rust
 
@@ -40,36 +40,36 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source chivalryq/git-alias
 znap source MichaelAquilina/zsh-you-should-use
 znap source conda-incubator/conda-zsh-completion
-source ~/.fzf.zsh
-
 
 znap fpath _kubectl 'kubectl completion zsh'
-znap fpath _kind 'kind completion zsh'
 znap fpath _helm 'helm completion zsh'
 
-znap eval _brew "/opt/homebrew/bin/brew shellenv"
+# znap eval _brew "/opt/homebrew/bin/brew shellenv"
 znap eval _zoxide 'zoxide init zsh'
 znap eval _starship 'starship init zsh --print-full-init'
+znap eval _autin "atuin init zsh"
+
 
 znap prompt
 
 alias vi='nvim'
-alias ls='exa' 
-alias l='exa -lbF --git' 
-alias la='l -a' 
-alias ll='exa -lbhHigUmuS --time-style=long-iso --git --color-scale' 
-alias lla='ll -a' 
-alias lr='exa -R' 
-alias lt='exa -T --level=5'
-alias lta='exa -T --level=5 -a'
+alias ls='eza'
+alias l='eza -lbF --git'
+alias la='l -a'
+alias ll='eza -lbhHigUmuS --time-style=long-iso --git --color-scale'
+alias lla='ll -a'
+alias lr='eza -R'
+alias lt='eza -T --level=5'
+alias lta='eza -T --level=5 -a'
 alias lg='lazygit'
-alias t='tmux attach || tmux new'
+alias t='tmux attach || tmux new -s NEO'
 alias kssh='kitty +kitten ssh'
 alias icat='kitty +kitten icat'
 alias diff="kitty +kitten diff"
 alias bup='brew update && brew upgrade --greedy'
 
 alias k='kubectl'
+alias i='istioctl'
 alias kubectl="kubecolor"
 
 compdef kubecolor=kubectl

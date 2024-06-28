@@ -1,0 +1,26 @@
+import = ["/Users/neo/.config/alacritty/themes/themes/Cobalt2.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 17.0
+
+[font.bold]
+family = "MonaspiceAr Nerd Font"
+
+[font.bold_italic]
+family = "MonaspiceAr Nerd Font"
+
+[font.italic]
+family = "MonaspiceAr Nerd Font"
+
+[font.normal]
+family = "MonaspiceAr Nerd Font"
+style = "Regular"
+
+[window]
+decorations = "none"

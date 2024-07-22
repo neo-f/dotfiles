@@ -4,4 +4,5 @@ return {
   { "dracula/vim", lazy = false },
   { "rebelot/kanagawa.nvim" },
   { "savq/melange-nvim" },
+  { "atmosuwiryo/vim-winteriscoming" },
 }

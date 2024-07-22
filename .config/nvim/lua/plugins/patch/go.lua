@@ -6,7 +6,8 @@ return {
         gopls = {
           settings = {
             gopls = {
-              gofumpt = true,
+              staticcheck = false,
+              -- gofumpt = true,
               codelenses = {
                 gc_details = true,
               },
@@ -27,15 +28,27 @@ return {
         "williamboman/mason.nvim",
         opts = function(_, opts)
           opts.ensure_installed = opts.ensure_installed or {}
-          vim.list_extend(opts.ensure_installed, {
-            "golangci-lint",
-          })
+          vim.list_extend(opts.ensure_installed, { "golangci-lint" })
         end,
       },
     },
     opts = {
+      linters = {
+        golangcilint = {
+          args = { "run", "--out-format", "--fix", "json" },
+        },
+      },
       linters_by_ft = {
         go = { "golangcilint" },
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        go = {},
       },
     },
   },

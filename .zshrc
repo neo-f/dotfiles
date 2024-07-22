@@ -4,6 +4,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.docker/bin
 export PATH=$PATH:$HOME/.bun/bin
+export PATH=$PATH:$HOME/.moon/bin
 
 export GOPROXY=goproxy.cn,direct
 export EDITOR=nvim
@@ -36,6 +37,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 # Add in snippets
 zinit snippet OMZP::brew
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::direnv
 zinit snippet OMZP::extract
 zinit snippet OMZP::eza
 zinit snippet OMZP::fzf
@@ -93,6 +95,8 @@ alias ff='fastfetch'
 alias i='istioctl'
 alias kubectl="kubecolor"
 
+eval "$(moon completions)"
+
 compdef kubecolor=kubectl
 
 alias bashly='docker run --rm -it --user $(id -u):$(id -g) --volume "$PWD:/app" dannyben/bashly'
@@ -125,3 +129,7 @@ rfv() (
 cht() {
   curl https://cht.sh/$1
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

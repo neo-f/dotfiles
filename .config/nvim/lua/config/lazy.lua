@@ -17,7 +17,7 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      opts = { colorscheme = "kanagawa" },
+      opts = { colorscheme = "tokyonight" },
     },
 
     -- import/override with your plugins

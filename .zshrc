@@ -9,13 +9,6 @@ export PATH=$PATH:$HOME/.moon/bin
 export GOPROXY=goproxy.cn,direct
 export EDITOR=nvim
 
-export KUBECONFIG=\
-:~/.kube/kimi-cluster-dev\
-:~/.kube/kimi-cluster-prod\
-:~/.kube/dada-cluster-dev\
-:~/.kube/dada-cluster-prod
-
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 

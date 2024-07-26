@@ -24,31 +24,16 @@ return {
   {
     "mfussenegger/nvim-lint",
     dependencies = {
-      {
-        "williamboman/mason.nvim",
-        opts = function(_, opts)
-          opts.ensure_installed = opts.ensure_installed or {}
-          vim.list_extend(opts.ensure_installed, { "golangci-lint" })
-        end,
-      },
+      { "williamboman/mason.nvim", opts = { ensure_installed = { "golangci-lint" } } },
     },
     opts = {
       linters = {
         golangcilint = {
-          args = { "run", "--out-format", "--fix", "json" },
+          args = { "run", "--out-format", "json" },
         },
       },
       linters_by_ft = {
         go = { "golangcilint" },
-      },
-    },
-  },
-
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        go = {},
       },
     },
   },

@@ -7,7 +7,7 @@ draw_bold_text_with_bright_colors = true
 TERM = "alacritty"
 
 [font]
-size = 17.0
+size = 24.0
 
 [font.bold]
 family = "MonaspiceAr Nerd Font"

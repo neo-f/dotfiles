@@ -1,4 +1,5 @@
 return {
+  -- themes
   {
     "folke/tokyonight.nvim",
     opts = {

@@ -24,7 +24,10 @@ return {
   {
     "mfussenegger/nvim-lint",
     dependencies = {
-      { "williamboman/mason.nvim", opts = { ensure_installed = { "golangci-lint" } } },
+      {
+        "williamboman/mason.nvim",
+        opts = { ensure_installed = { "golangci-lint" } },
+      },
     },
     opts = {
       linters = {

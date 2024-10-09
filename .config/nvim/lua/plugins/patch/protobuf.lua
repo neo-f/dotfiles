@@ -7,19 +7,11 @@ return {
     opts = { formatters_by_ft = { proto = { "buf" } } },
   },
 
-  {
-    "mfussenegger/nvim-lint",
-    dependencies = {
-      { "williamboman/mason.nvim", opts = { ensure_installed = { "buf" } } },
-    },
-    opts = { linters_by_ft = { proto = { "buf_lint" } } },
-  },
-
   -- {
-  --   "neovim/nvim-lspconfig",
+  --   "mfussenegger/nvim-lint",
   --   dependencies = {
-  --     { "williamboman/mason.nvim", opts = { ensure_installed = { "pbls" } } },
+  --     { "williamboman/mason.nvim", opts = { ensure_installed = { "buf" } } },
   --   },
-  --   opts = { servers = { pbls = {} } },
+  --   opts = { linters_by_ft = { proto = { "buf_lint" } } },
   -- },
 }

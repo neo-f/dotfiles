@@ -4,5 +4,17 @@ return {
     inlay_hints = {
       enabled = false,
     },
+
+    servers = {
+      cssls = {
+        settings = {
+          css = {
+            lint = {
+              unknownAtRules = "ignore",
+            },
+          },
+        },
+      },
+    },
   },
 }

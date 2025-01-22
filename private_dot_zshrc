@@ -124,7 +124,7 @@ killp(){
 }
 
 # cheatsheet
-h() {
+help() {
   curl https://cht.sh/$1
 }
 

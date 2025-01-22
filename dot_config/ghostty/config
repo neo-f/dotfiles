@@ -1,0 +1,94 @@
+
+# Theme settings
+theme = catppuccin-mocha
+# background = #1c2021
+# background = #0B1215
+# background-opacity = 0.90
+background-blur-radius = 20
+bold-is-bright = true
+#
+# # window settings
+macos-titlebar-style = tabs
+window-decoration = true
+window-theme = auto
+window-padding-color = background
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-colorspace = "display-p3"
+adjust-cell-height = 10%
+
+
+# Font settings
+# font-family = "Monaspace Neon Regular"
+font-family = "Comic Code Ligatures"
+font-size = 16
+cursor-color = #FFA500
+font-feature = +liga
+cursor-style = block
+
+# font-size = 20
+# shell-integration = zsh
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+# Split keybindings
+# These are similar to tmux, but with the prefix being ctrl+a
+keybind = ctrl+a>shift+-=new_split:right
+keybind = ctrl+a>-=new_split:down
+
+keybind = ctrl+a>c=new_tab
+keybind = ctrl+a>shift+l=next_tab
+keybind = ctrl+a>shift+h=previous_tab
+keybind = ctrl+a>comma=move_tab:-1
+keybind = ctrl+a>period=move_tab:1
+
+keybind = ctrl+a>1=goto_tab:1
+keybind = ctrl+a>2=goto_tab:2
+keybind = ctrl+a>3=goto_tab:3
+keybind = ctrl+a>4=goto_tab:4
+keybind = ctrl+a>5=goto_tab:5
+keybind = ctrl+a>6=goto_tab:6
+keybind = ctrl+a>7=goto_tab:7
+keybind = ctrl+a>8=goto_tab:8
+keybind = ctrl+a>9=goto_tab:9
+
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>l=goto_split:right
+
+keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+a>e=equalize_splits
+
+# custom-shader = shaders/bettercrt.glsl
+custom-shader = shaders/bloom.glsl
+# custom-shader = shaders/cineShader-Lava.glsl
+# custom-shader = shaders/crt.glsl
+# custom-shader = shaders/cubes.glsl
+# custom-shader = shaders/dither.glsl
+# custom-shader = shaders/drunkard.glsl
+# custom-shader = shaders/fireworks-rockets.glsl
+# custom-shader = shaders/fireworks.glsl
+# custom-shader = shaders/galaxy.glsl
+# custom-shader = shaders/gears-and-belts.glsl
+# custom-shader = shaders/glitchy.glsl
+# custom-shader = shaders/glow-rgbsplit-twitchy.glsl
+# custom-shader = shaders/gradient-background.glsl
+# custom-shader = shaders/in-game-crt.glsl
+# custom-shader = shaders/inside-the-matrix.glsl
+# custom-shader = shaders/just-snow.glsl
+# custom-shader = shaders/matrix-hallway.glsl
+# custom-shader = shaders/negative.glsl
+# custom-shader = shaders/retro-terminal.glsl
+# custom-shader = shaders/sin-interference.glsl
+# custom-shader = shaders/smoke-and-ghost.glsl
+# custom-shader = shaders/sparks-from-fire.glsl
+# custom-shader = shaders/spotlight.glsl
+# custom-shader = shaders/starfield-colors.glsl
+# custom-shader = shaders/starfield.glsl
+# custom-shader = shaders/tft.glsl
+# custom-shader = shaders/underwater.glsl
+# custom-shader = shaders/water.glsl

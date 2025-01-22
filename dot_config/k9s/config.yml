@@ -1,0 +1,77 @@
+k9s:
+  liveViewAutoRefresh: false
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  enableImageScan: true
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: false
+  noExitOnCtrlC: false
+  noIcons: false
+  shellPod:
+    image: busybox:1.35.0
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  skipLatestRevCheck: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 60
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: cluster-istio
+  currentCluster: default
+  keepMissingClusters: false
+  clusters:
+    ccl10j0ioiliq21ijt6d0:
+      namespace:
+        active: eng-deva
+        lockFavorites: false
+        favorites:
+        - eng-master
+        - eng-deva
+        - all
+        - default
+      view:
+        active: event
+      featureGates:
+        nodeShell: false
+      portForwardAddress: localhost
+    default:
+      namespace:
+        active: istio-system
+        lockFavorites: false
+        favorites:
+        - istio-system
+        - all
+        - default
+      view:
+        active: po
+      featureGates:
+        nodeShell: false
+      portForwardAddress: localhost
+    orbstack:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - default
+      view:
+        active: po
+      featureGates:
+        nodeShell: false
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: /var/folders/65/wwvqghl122x7q2v8y_t385p80000gn/T/k9s-screens-neo
+  disablePodCounting: false

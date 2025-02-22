@@ -101,14 +101,6 @@ help() {
   curl https://cht.sh/$1
 }
 
-# pnpm
-export PNPM_HOME="/Users/neo/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-
 # bun completions
 [ -s "/Users/neo/.bun/_bun" ] && source "/Users/neo/.bun/_bun"
+
